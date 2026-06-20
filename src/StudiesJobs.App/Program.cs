@@ -2,6 +2,9 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StudiesJobs.App._01_Basic;
+using StudiesJobs.App._02_Intermediate;
+using StudiesJobs.App._02_Intermediate.Business;
+using StudiesJobs.App._02_Intermediate.Interfaces;
 
 internal class Program
 {
@@ -22,7 +25,10 @@ internal class Program
             })
             .ConfigureServices((hostContext, services) =>
             {
+                services.AddScoped<IOrderService, OrderService>();
+
                 services.AddHostedService<HeartbeatJob>();
+                services.AddHostedService<OrderProcessingJob>();
             }).Build();
 
         await host.RunAsync();
