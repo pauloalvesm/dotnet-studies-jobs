@@ -5,6 +5,8 @@ using StudiesJobs.App._01_Basic;
 using StudiesJobs.App._02_Intermediate;
 using StudiesJobs.App._02_Intermediate.Business;
 using StudiesJobs.App._02_Intermediate.Interfaces;
+using StudiesJobs.App._03_Advanced.Jobs;
+using StudiesJobs.App._03_Advanced.Queues;
 
 internal class Program
 {
@@ -26,9 +28,13 @@ internal class Program
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddScoped<IOrderService, OrderService>();
+                services.AddSingleton<InMemoryIntegrationQueue>();
 
                 services.AddHostedService<HeartbeatJob>();
                 services.AddHostedService<OrderProcessingJob>();
+
+                services.AddHostedService<EventProducerJob>();
+                services.AddHostedService<EventConsumerJob>();
             }).Build();
 
         await host.RunAsync();
