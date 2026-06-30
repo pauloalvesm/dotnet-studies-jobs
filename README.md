@@ -7,7 +7,7 @@
 
 ## 💻 Project
 
-Repository with a console application demonstrating the use of Jobs.
+A repository for academic purposes that includes a console application demonstrating the use of Jobs. The idea is to provide an introduction to this feature.
 
 ## 🚀 Technologies and Tools
 
@@ -22,6 +22,13 @@ This project was developed using the following technologies:
 
 ```bash
 git clone https://github.com/pauloalvesm/dotnet-studies-jobs.git
+
+# Navigate to the project folder
+cd src/StudiesJobs.App
+
+# Restore dependencies
+dotnet restore
+
 ```
 
 
